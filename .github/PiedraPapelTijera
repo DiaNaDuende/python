@@ -1,0 +1,81 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jun 24 18:10:37 2020
+
+@author: dllopezd
+"""
+
+#Juego de piedra, papel o tijeras /PROGRAMACION FUNCIONAL
+
+import random
+
+#Initial message
+
+print ("BIENVENIDO AL JUEGO DE PIEDRA, PAPEL O TIJERA. ¿LISTO?")
+print ("1...")
+print ("2...")
+print ("3...")
+
+the_choice = int(input("¿PIEDRA (1), PAPEL (2) O TIJERA(3)?"))
+juego=[1,2,3]
+pc_choice = random.choice(juego) 
+
+
+#WHAT DID THE PLAYER DECIDED?
+def player(the_choice):
+     if (the_choice == 1):
+        print ("DECIDISTE PIEDRA")
+     elif (the_choice == 2):
+        print ("DECIDISTE PAPEL")
+     elif (the_choice == 3):
+        print ("DECIDISTE TIJERA")
+     else:
+        print ("¿ESTÁS JUGANDO? INTENTA DE NUEVO.")
+
+#WHAT DID THE PCE DECIDED?
+def pc_game(pc_choice):
+    if (pc_choice == 1):
+        print ("DECIDÍ PIEDRA")
+    elif (pc_choice == 2):
+        print ("DECIDÍ PAPEL")
+    elif (pc_choice == 3):
+        print ("DECIDÍ TIJERA")
+        
+
+#THE GAME
+def the_result(the_choice,pc_choice):    
+    if the_choice==pc_choice:
+        print ("NADIE GANA!")
+    elif ((the_choice==1 and pc_choice == 2) or (the_choice==2 and pc_choice == 1)):
+        print ("PAPEL GANA!")
+    elif ((the_choice==1 and pc_choice == 3) or (the_choice==3 and pc_choice == 1)):
+        print ("PIEDRA GANA!")
+    elif ((the_choice==2 and pc_choice == 3) or (the_choice==3 and pc_choice == 2)):
+        print ("TIJERA GANA!")    
+
+
+
+def score(the_choice,pc_choice):
+    pc_score=0
+    the_score=0
+
+    if the_choice==pc_choice:
+        print ("EMPATE!")
+    
+    elif ((the_choice==1 and pc_choice == 3) or (the_choice==2 and pc_choice == 1) or (the_choice==3 and pc_choice == 2)):
+        the_score = the_score + 1
+        
+    elif ((the_choice==1 and pc_choice == 2) or (the_choice==2 and pc_choice == 3) or (the_choice==3 and pc_choice == 1)):
+        pc_score = pc_score + 1
+    
+    print ("*************************************************************************************************************")
+    print ("TUS PUNTOS:", the_score)
+    print ("MIS PUNTOS:", pc_score)
+    print ("*************************************************************************************************************")
+
+player(the_choice)
+pc_game(pc_choice)
+the_result(the_choice,pc_choice)   
+score(the_choice,pc_choice) 
+
+print ("FIN")
